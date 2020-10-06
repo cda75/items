@@ -17,7 +17,7 @@ from email import encoders
 outputFile = "items_out.xlsx"
 workDir = os.path.dirname(os.path.abspath(__file__))
 dstDir = ''
-eMails = ['d.chestnov@inlinegroup.ru', 'a.korolkov@inlinegroup.ru']
+eMails = ['yyy@inlinegroup.ru', 'xxx@inlinegroup.ru']
 
 
 #Define column names and their indexes
@@ -202,11 +202,11 @@ def correct_vn(vName):
     
 def get_latest_file():
     subprocess.call(r'net use z: /del /Y', shell=True)
-    subprocess.call(r'net use z: \\inlinegroup.ru\Public\ППВВ\Треш /user:d.chestnov@inlinegroup.ru Gsm6raiN', shell=True)
+    subprocess.call(r'net use z: \\inlinegroup.ru\Public\ППВВ\Треш /user:my_user_name my_password', shell=True)
     os.chdir(r'Z:')
     list_of_files = glob.glob("*.xlsx") 
     latest_file = max(list_of_files, key=os.path.getctime)   
-    timeDelta = time() - 3600*24*10  #Check only files not older than 6 days
+    timeDelta = time() - 3600*24*6  #Check only files not older than 6 days
     fileCreation = os.path.getctime(latest_file) 
     if latest_file and (fileCreation > timeDelta):
         print ('\nProcessing file: ', latest_file)
@@ -231,7 +231,7 @@ def logging(info):
 
 def copy_file(f):
 	subprocess.call(r'net use z: /del /Y', shell=True)
-	subprocess.call(r'net use z: \\inlinegroup.ru\Public\ППВВ\Треш\Upload /user:d.chestnov@inlinegroup.ru Gsm6raiN', shell=True)
+	subprocess.call(r'net use z: \\inlinegroup.ru\Public\ППВВ\Треш\Upload /user:my_user_bame my_password', shell=True)
 	shutil.copy2(f, r'Z:')
 	subprocess.call(r'net use z: /del /Y', shell=True) 
 
